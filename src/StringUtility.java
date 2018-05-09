@@ -1,6 +1,7 @@
 import java.security.MessageDigest;//Lo importamos para acceder al algoritmo SHA256 para poder crear una firma digital
 
-public class Utility {
+public class StringUtility {
+	
 	
 	public static String applySha256(String input){		
 	
@@ -19,23 +20,26 @@ public class Utility {
 			//Aqui se guardará el hash en hexadecimal
 			StringBuffer hexString = new StringBuffer(); 
 			
-			//cogemos el tamaño del hash
+			//cogemos el tamaño del hash que esta en la clase noobchain como publico
 			for (int i = 0; i < hash.length; i++) {
-			
+				
+				//creamos variable hex de tipo String donde pasamos todos los Integers a hexadecimal
 				String hex = Integer.toHexString(0xff & hash[i]);
-				
+				//Si el length del hex es 1 le añadimos un 0
 				if(hex.length() == 1) hexString.append('0');
-				
+				//Añadimos a hexString, hex.
 				hexString.append(hex);
 			}
-			
+			//devolvemos el hexadecimal parseado a string 
 			return hexString.toString();
 		}
+		//se recoge la exepcion en caso de que falle en el try y se 
 		
 		catch(Exception e) {
 			throw new RuntimeException(e);
 		}
 } 
-}
+	}
+
 //TODO entender todo el codigo de la class Utility que no se como funciona y seguir con el tutorial
 

@@ -1,10 +1,10 @@
 import java.util.Date;
 import java.security.MessageDigest;//Lo importamos para acceder al algoritmo SHA256 para poder crear una firma digital
 
-public class NoobChain {
+public class Block {
 	
 
-	public class Block {
+	
 
 		public String hash;
 		public String previousHash;
@@ -16,7 +16,25 @@ public class NoobChain {
 			this.data = data;
 			this.previousHash = previousHash;
 			this.timeStamp = new Date().getTime();
+			this.hash = calculateHash();
+			
+			
+			
+			}
+		public String calculateHash() {
+			String calculatedhash = StringUtility.applySha256( 
+					previousHash +
+					Long.toString(timeStamp) +
+					data 
+					);
+			return calculatedhash;
 		}
-	}
+		
+		@Override
+		public String toString() {
+			return "Block [hash=" + hash + ", previousHash=" + previousHash + ", data=" + data + ", timeStamp="
+					+ timeStamp + "]";
+		}
+	
 
 }
