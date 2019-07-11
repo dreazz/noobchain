@@ -2,10 +2,6 @@ import java.util.Date;
 import java.security.MessageDigest;//Lo importamos para acceder al algoritmo SHA256 para poder crear una firma digital
 
 public class Block {
-	
-
-	
-
 		public String hash;
 		public String previousHash;
 		private String data; //our data will be a simple message.
